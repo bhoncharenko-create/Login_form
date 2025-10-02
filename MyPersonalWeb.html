@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Моя персональна сторінка</title>
+  <link rel="stylesheet" href="styleWebSite.css">
+</head>
+<body>
+  <header class="navbar">
+    <nav>
+      <ul>
+        <li><a href="#about">Про мене</a></li>
+        <li><a href="#skills">Навички</a></li>
+        <li><a href="#code">Приклади коду</a></li>
+        <li><a href="#education">Освіта</a></li>
+        <li><a href="#languages">Мови</a></li>
+        <li><a href="#projects">Проєкти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <img src="Head2.png" alt="Фото" class="profile-pic">
+      <h2>Гончаренко Богдан</h2>
+      <p class="role">Студент</p>
+      <div class="info">
+        <p>📧 b.honcharenko@kitu.nau.edu.ua</p>
+        <p>📞 +380 50 555 4444</p>
+        <p>🎂 29 серпня 2006 року</p>
+        <p>📍 Україна</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="about">
+        <h2>Про мене</h2>
+        <p>Я студент коледжу, цікавлюсь веб-розробкою, програмуванням та сучасними технологіями.</p>
+      </section>
+
+      <section id="skills">
+        <h2>Навички</h2>
+        <ul>
+          <li>HTML / CSS</li>
+          <li>JavaScript</li>
+          <li>Git / GitHub</li>
+          <li>VS Code</li>
+          <li>MS SQL Server</li>
+        </ul>
+      </section>
+
+      <section id="code">
+        <h2>Приклади коду</h2>
+        <pre><code>public class Score : MonoBehaviour
+{
+    public static Score Instance { get; private set; }
+    public TextMeshProUGUI[] scoreText;
+    public TextMeshProUGUI[] HighScoreText;
+    public int score { get; private set; }
+    public int HighScore 
+    {  
+        get => PlayerPrefs.GetInt("HighScore", 0); 
+        private set => PlayerPrefs.SetInt("HighScore", value);
+    }  
+    private int loadedHighScore;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        loadedHighScore = HighScore;
+        foreach (var text in HighScoreText)
+        {
+            text.text = $"{loadedHighScore}";
+        }
+    }
+
+    public void IncreaseScore(int amount)
+    {
+        score += amount;
+        foreach (var text in scoreText)
+        {
+            text.text = $"{score}";
+        }
+        if (score > loadedHighScore)
+        {
+            HighScore = score;
+        }
+    }
+}</code></pre>
+      </section>
+
+      <section id="education">
+        <h2>Освіта</h2>
+        <p><b>Коледж:</b> Кіту Нау</p>
+        <p><b>Курси:</b> 4 курс</p>
+      </section>
+
+      <section id="languages">
+        <h2>Мови</h2>
+        <ul>
+          <li>Українська – рідна</li>
+          <li>Англійська – B2</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Проєкти</h2>
+        <p><a href="https://github.com/bhoncharenko-create" target="_blank">Мій GitHub</a></p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
