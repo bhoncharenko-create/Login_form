@@ -41,18 +41,48 @@ input[type="password"] {
     border-radius: 8px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: 14px;
 }
 
+input.valid {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.4);
+}
+
+input.invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.4);
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+    min-height: 16px;
+}
+
+/* Чекбокс */
 .checkbox-group {
     display: flex;
     align-items: center;
     margin-top: 8px;
+    margin-bottom: 10px;
 }
 
 .checkbox-group input {
     margin-right: 8px;
+    width: auto;
 }
 
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: normal;
+    color: #555;
+}
+
+/* Кнопка */
 button {
     width: 100%;
     padding: 12px;
@@ -62,11 +92,20 @@ button {
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+    font-weight: bold;
 }
 
-button:hover {
+button:hover:not(:disabled) {
     background: #45a049;
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+    transform: none;
 }
 
 .modal {
@@ -90,11 +129,12 @@ button:hover {
     width: 350px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     position: relative;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .modal-content h2 {
     margin-bottom: 10px;
-    color: green;
+    color: #28a745;
 }
 
 .modal-content p {
@@ -103,7 +143,7 @@ button:hover {
 }
 
 .modal-content h3 {
-    margin: 15px 0;
+    margin: 15px 0 10px 0;
     font-weight: bold;
     color: #000;
 }
@@ -115,6 +155,8 @@ button:hover {
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
+    width: auto;
+    margin-top: 15px;
 }
 
 .modal-content button:hover {
@@ -125,6 +167,17 @@ button:hover {
     position: absolute;
     right: 15px;
     top: 10px;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
+    color: #aaa;
+    font-weight: bold;
+}
+
+.close:hover {
+    color: #000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
