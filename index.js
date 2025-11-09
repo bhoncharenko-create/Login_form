@@ -101,12 +101,25 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        console.log('Дані форми:', {
-            firstName: firstName.value,
-            lastName: lastName.value,
-            email: email.value,
-            password: password.value
-        });
+const SECRET_KEY = "MY_SECRET_KEY"; // будь-яке слово
+
+// Шифруємо пароль
+const encryptedPassword = CryptoJS.AES.encrypt(password.value, SECRET_KEY).toString();
+
+// Завантажуємо існуючих користувачів або створюємо список
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+// Додаємо нового
+users.push({
+    firstName: firstName.value,
+    lastName: lastName.value,
+    email: email.value,
+    password: encryptedPassword
+});
+
+// Зберігаємо назад
+localStorage.setItem("users", JSON.stringify(users));
+
 
         userNameDisplay.textContent = `${firstName.value} ${lastName.value}`;
         userEmailDisplay.textContent = email.value;
@@ -141,4 +154,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     submitBtn.disabled = true;
+    
+        // ====== ВХІД КОРИСТУВАЧА ======
+    document.getElementById("goLogin").addEventListener("click", () => {
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
+        const SECRET_KEY = "MY_SECRET_KEY";
+    
+        let users = JSON.parse(localStorage.getItem("users") || "[]");
+    
+        for (let user of users) {
+            let decryptedPassword = CryptoJS.AES.decrypt(user.password, SECRET_KEY).toString(CryptoJS.enc.Utf8);
+            
+            if (user.email === emailValue && decryptedPassword === passwordValue) {
+                localStorage.setItem("currentUser", `${user.firstName} ${user.lastName}`);
+                window.location.href = "user.html"; // ✅ перехід на сторінку користувача
+                return;
+            }
+        }
+    
+        alert("❌ Невірний email або пароль!");
+    });
+
 });

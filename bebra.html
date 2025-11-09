@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>Реєстрація</h2>
+        <h2>Реєстрація / Вхід</h2>
         <form id="loginForm">
             <div class="form-group">
                 <label for="firstName">Ім'я:</label>
@@ -23,7 +23,7 @@
             </div>
             
             <div class="form-group">
-                <label for="email">Електронна пошта:</label>
+                <label for="email">Електронна пошта (логін):</label>
                 <input type="email" id="email" name="email">
                 <span class="error-message" id="emailError"></span>
             </div>
@@ -41,6 +41,13 @@
             
             <button type="submit" disabled>Зареєструватися</button>
         </form>
+
+        <p style="text-align:center; margin-top:10px;">
+            <a href="#" id="goLogin">У мене вже є акаунт</a>
+        </p>
+        <p style="text-align:center; margin-top:10px;">
+            <a href="admin.html">Панель адміністратора</a>
+        </p>
     </div>
 
     <div id="successModal" class="modal">
@@ -56,5 +63,9 @@
     </div>
 
     <script src="index.js"></script>
+
+    <!-- ПІДКЛЮЧАЄМО CRYPTOJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
 </body>
 </html>

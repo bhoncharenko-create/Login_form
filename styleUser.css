@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: monospace;
+  background: url("https://cdn.discordapp.com/attachments/1002609226205630575/1341549557791854632/cannyArrive-4x.gif?ex=6911ca23&is=691078a3&hm=f31b87b46c41bbf540629ed89b6756a744ad3a5c2b93bd158cb2e0b8ee7a4b55&") center/cover no-repeat;
+  color: #00ff88;
+  text-align:center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(0,0,0,0.7);
+  font-size: 24px;
+  color: #00ff88;
+}
+
+.code-box {
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 50px auto;
+  width: 70%;
+  font-size: 14px;
+  color: #fff; /* текст — білий! */
+  text-shadow: 
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}

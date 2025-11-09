@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Адмін панель</title>
+</head>
+<body>
+
+<h2>Список користувачів</h2>
+<table border="1" cellpadding="5">
+<thead><tr><th>Ім’я</th><th>Прізвище</th><th>Email</th><th>Пароль</th></tr></thead>
+<tbody id="table"></tbody>
+</table>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script>
+const SECRET_KEY = "MY_SECRET_KEY";
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+let tbody = document.getElementById("table");
+
+users.forEach(u => {
+    let decrypted = CryptoJS.AES.decrypt(u.password, SECRET_KEY).toString(CryptoJS.enc.Utf8);
+    tbody.innerHTML += `<tr><td>${u.firstName}</td><td>${u.lastName}</td><td>${u.email}</td><td>${decrypted}</td></tr>`;
+});
+</script>
+
+</body>
+</html>

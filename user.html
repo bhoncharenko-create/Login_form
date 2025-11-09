@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Сторінка користувача</title>
+<link rel="stylesheet" href="styleUser.css">
+</head>
+<body>
+
+<header>
+  <h1>Welcome</h1>
+  <span class="username">User</span>
+</header>
+
+<main>
+  <h2>Welcome <span id="userName"></span></h2>
+
+  <div class="code-box">
+<pre>
+function encodeToRot13(str) {
+  const originalAlpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const cipher =      'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  return str.replace(/[A-Za-z]/g, (letter) => cipher[originalAlpha.indexOf(letter)]);
+}
+</pre>
+  </div>
+</main>
+
+<script>
+document.getElementById("userName").textContent = localStorage.getItem("currentUser") || "User";
+</script>
+
+</body>
+</html>
